@@ -1,24 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios";
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-
-function createData(name, calories, fat, carbs, protein ) {
-  return { name, calories, fat, carbs, protein};
-}
-
-const rows = [
-  createData("Games Played:", 159, 6.0, 24, 4.0),
-  createData("Points Averaged:", 237, 9.0, 37, 4.3),
-  createData("Rebounds Averaged:", 262, 16.0, 24, 6.0),
-  createData("Assists Averaged", 305, 3.7, 67, 4.3),
-];
-
+import './App.css';
 
 class App extends Component {
   constructor(props){
@@ -70,10 +52,11 @@ handleChange = (event) => {
       console.log(err)
     })
   }
-  
+
   render(){
   return (
     <div className="App">
+
     <img src='https://teamworxteambuilding.com/wp-content/uploads/2018/08/nba-logo-72dpi.jpg'
     style={{
         height: '80%',
@@ -81,11 +64,11 @@ handleChange = (event) => {
         position: 'relative',
         top: '-5px',
         left: '10%'}}/>
+
      <form onSubmit={this.handleSubmit}
      style={{
        position: 'relative',
-       left: '40%',
-       
+       left: '38%',
      }}>
        <label>
          Name
@@ -98,34 +81,53 @@ handleChange = (event) => {
        </label>
        <input type="submit" value="Submit"/>
      </form>
-     <div>
-       
-     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
 
+     <table>
+       <thead>
+         <tr>
+           <th>Total Games Played </th>
+           <th>Points Per Game</th>
+           <th>Rebounds Per Game</th>
+           <th>Assists Per Game</th>
+           <th>Steals Per Game</th>
+           <th>Blocks Per Game</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+           <td>{this.state.playerStats["games_played"]}</td>
+           <td>{this.state.playerStats["pts"]}</td>
+           <td>{this.state.playerStats["reb"]}</td>
+           <td>{this.state.playerStats["ast"]}</td>
+           <td>{this.state.playerStats["stl"]}</td>
+           <td>{this.state.playerStats["blk"]}</td>
+         </tr>
+       </tbody>
+     </table>
 
-
-     </div>
+     <table>
+       <thead>
+         <tr>
+           <th>Field Goals Attempted (per game)</th>
+           <th>Field Goals Made</th>
+           <th>Free Throws Attempted</th>
+           <th>Free Throws Made</th>
+           <th>Offensive Rebounds</th>
+           <th>Defensive Rebounds</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+           <td>{this.state.playerStats["fga"]}</td>
+           <td>{this.state.playerStats["fgm"]}</td>
+           <td>{this.state.playerStats["fta"]}</td>
+           <td>{this.state.playerStats["ftm"]}</td>
+           <td>{this.state.playerStats["oreb"]}</td>
+           <td>{this.state.playerStats["dreb"]}</td>
+         </tr>
+       </tbody>
+     </table>
+     
     </div>
   );
 }
