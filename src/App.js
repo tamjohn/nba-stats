@@ -7,7 +7,8 @@ class App extends Component {
     super(props)
     this.state={
       playerName: null,
-      playerStats: {}
+      seasonYear: null,
+      playerStats: {},
     }
   }
 
@@ -15,6 +16,7 @@ handleSubmit = (e) => {
   e.preventDefault();
   this.getPlayerId()
   console.log(this.state.playerName)
+  console.log(this.state.seasonYear)
 }
 
 handleChange = (event) => {
@@ -24,6 +26,13 @@ handleChange = (event) => {
   } else {
     alert("Please type players name!")
   }
+}
+
+handleChange2 = (event) => {
+  console.log(event.target.value);
+  this.setState({
+    seasonYear: event.target.value
+  })
 }
 
   getPlayerId = () => {
@@ -44,7 +53,7 @@ handleChange = (event) => {
   }
 
   getPlayerStats = (playerId) => {
-    axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=2006&player_ids[]=${playerId}`)
+    axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=${this.state.seasonYear}&player_ids[]=${playerId}`)
     .then(async res => {
       console.log(res.data.data)
       this.setState({ playerStats: res.data.data[0]})
@@ -68,19 +77,32 @@ handleChange = (event) => {
      <form onSubmit={this.handleSubmit}
      style={{
        position: 'relative',
-       left: '38%',
+       left: '30%',
+       justifyContent: 'space'
      }}>
-       <label>
-         Name
-         <input 
-          type="text"
-          value={this.state.value}
-          onChange={this.handleChange}
+
+       <div>
+         <label> Name </label>
+         <input
+          name = "Name"
           placeholder="please enter players name"
-         />
-       </label>
-       <input type="submit" value="Submit"/>
-     </form>
+          type="text"
+          value={this.state.playerName}
+          onChange={this.handleChange}
+          />
+       </div>
+       <div>
+       <label> Season </label>
+         <input
+          name = "Season"
+          placeholder="please enter the season"
+          type="number"
+          value={this.state.seasonYear}
+          onChange={this.handleChange2}
+          />
+       </div>
+         <input type="submit" value="Submit"/>
+       </form>
 
      <table>
        <thead>
