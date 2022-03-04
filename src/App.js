@@ -85,22 +85,30 @@ handleChange = (event) => {
      <table>
        <thead>
          <tr>
-           <th>Total Games Played </th>
+           <th>Total Games Played</th>
+           <th>Minutes Played Per Game</th>
            <th>Points Per Game</th>
            <th>Rebounds Per Game</th>
+           <th>Offensive Rebounds Per Game</th>
+           <th>Defensive Rebounds Per Game</th>
            <th>Assists Per Game</th>
            <th>Steals Per Game</th>
            <th>Blocks Per Game</th>
+           <th>Turnovers Per Game</th>
          </tr>
        </thead>
        <tbody>
          <tr>
            <td>{this.state.playerStats["games_played"]}</td>
+           <td>{this.state.playerStats["min"]}</td>
            <td>{this.state.playerStats["pts"]}</td>
            <td>{this.state.playerStats["reb"]}</td>
+           <td>{this.state.playerStats["oreb"]}</td>
+           <td>{this.state.playerStats["dreb"]}</td>
            <td>{this.state.playerStats["ast"]}</td>
            <td>{this.state.playerStats["stl"]}</td>
            <td>{this.state.playerStats["blk"]}</td>
+           <td>{this.state.playerStats["turnover"]}</td>
          </tr>
        </tbody>
      </table>
@@ -108,22 +116,30 @@ handleChange = (event) => {
      <table>
        <thead>
          <tr>
-           <th>Field Goals Attempted (per game)</th>
-           <th>Field Goals Made</th>
-           <th>Free Throws Attempted</th>
-           <th>Free Throws Made</th>
-           <th>Offensive Rebounds</th>
-           <th>Defensive Rebounds</th>
+           <th>Field Goals Attempted per game</th>
+           <th>Field Goals Made per game</th>
+           <th>Season Field Goal %</th>
+           <th>Three Pointers Attempted per game</th>
+           <th>Three Pointers made per game</th>
+           <th>Season Three Point %</th>
+           <th>Free Throws Attempted per game</th>
+           <th>Free Throws Made per game</th>
+           <th>Season Free Throw %</th>
+           <th>Fouls per game</th>
          </tr>
        </thead>
        <tbody>
          <tr>
            <td>{this.state.playerStats["fga"]}</td>
            <td>{this.state.playerStats["fgm"]}</td>
+           <td>{this.state.playerStats["fg_pct"]}</td>
+           <td>{this.state.playerStats["fg3a"]}</td>
+           <td>{this.state.playerStats["fg3m"]}</td>
+           <td>{this.state.playerStats["fg3_pct"]}</td>
            <td>{this.state.playerStats["fta"]}</td>
            <td>{this.state.playerStats["ftm"]}</td>
-           <td>{this.state.playerStats["oreb"]}</td>
-           <td>{this.state.playerStats["dreb"]}</td>
+           <td>{this.state.playerStats["ft_pct"]}</td>
+           <td>{this.state.playerStats["pf"]}</td>
          </tr>
        </tbody>
      </table>
