@@ -14,3 +14,7 @@ Clone this repo via Github
 
 - open terminal
 - run- npm start
+
+## Deploy in Heroku
+
+Heroku automatically deploys from master of this repo to https://nba-playerstats.herokuapp.com/
